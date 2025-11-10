@@ -795,16 +795,7 @@
       href="https://www.bayarea.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.bayarea.com%2Fthings-to-do%2Fpicnic-like-local-spots-worth-spreading-blanket%2F&amp;format=xml"
     />
     <meta name="generator" content="Site Kit by Google 1.164.0" />
-    <script>
-      var link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = '../../../usapi.aedi.ai/common/css/v1/aedi-ad-us.css';
-      document.head.appendChild(link);
 
-      var script = document.createElement('script');
-      script.src = '../../../usapi.aedi.ai/common/js/v1/aedi-ad-us.js';
-      document.head.appendChild(script);
-    </script>
     <script>
       window.tdb_global_vars = {
         wpRestUrl: 'https:\/\/www.bayarea.com\/wp-json\/',
@@ -7159,85 +7150,7 @@
       var gmapstyles = 'default';
       /* ]]> */
     </script>
-    <script>
-      var API_KEY;
-      var aedi;
-
-      var interval = setInterval(() => {
-        if (!aedi && typeof Aedi !== 'undefined') {
-          aedi = new Aedi();
-        }
-        if (aedi) {
-          clearInterval(interval);
-
-          if (navigator.userAgentData) {
-            if (navigator.userAgentData.mobile) {
-              device_aedi = 'mo';
-            } else {
-              device_aedi = 'pc';
-            }
-          } else {
-            var filter = 'win16|win32|win64|mac';
-            if (navigator.platform) {
-              if (0 > filter.indexOf(navigator.platform.toLowerCase())) {
-                device_aedi = 'mo';
-              } else {
-                device_aedi = 'pc';
-              }
-            }
-          }
-
-          if (device_aedi == 'mo') {
-            API_KEY = 'c7558e9d1f956b016d1fdba7ea132378'; // Mobile API KEY
-          } else {
-            API_KEY = 'c7558e9d1f956b016d1fdba7ea132378'; // PC API KEY
-          }
-
-          function aedi_open() {
-            var aediWritingTime = document.querySelector(
-              'meta[property="article:published_time"]'
-            ).content; // published time;
-
-            var imgs = document.querySelectorAll('.td-post-content img'); // target images
-
-            var captionSelector = null;
-
-            var imgs = Array.from(document.querySelectorAll('.td-post-content img'));
-
-            var filteredImgs = imgs.filter((img) => {
-              var width = img.naturalWidth || img.width;
-
-              if (width < 300) return false;
-
-              if (img.src && img.src.includes('Marin-Convention-Visitors-Bureau')) return false;
-
-              return true;
-            });
-
-            var style = document.createElement('style');
-
-            style.textContent = `
-
-
-            canvas.aedi-product {
-
-
-              animation-duration: 10s !important;
-
-
-            }
-
-          `;
-
-            document.head.appendChild(style);
-
-            aedi.adOpen(API_KEY, filteredImgs, aediWritingTime, captionSelector);
-          }
-
-          aedi_open();
-        }
-      }, 200);
-    </script>
+    
 
     <!--
 
@@ -7454,6 +7367,27 @@
         });
       })(document);
       /* ]]> */
+    </script>
+    <script type="text/javascript">
+      window.addEventListener('load', function () {
+        var API_KEY = 'c7558e9d1f956b016d1fdba7ea132378';
+        var aedi = new Aedi();
+        var aediWritingTime = document.querySelector(
+              'meta[property="article:published_time"]'
+            ).content; // published time;
+        var imgs = Array.from(document.querySelectorAll('.td-post-content img'));
+
+var filteredImgs = imgs.filter((img) => {
+  var width = img.naturalWidth || img.width;
+
+  if (width < 300) return false;
+
+  if (img.src && img.src.includes('Marin-Convention-Visitors-Bureau')) return false;
+
+  return true;
+});
+        aedi.adOpen(API_KEY, filteredImgs, aediWritingTime);
+      });
     </script>
   </body>
 
